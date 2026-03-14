@@ -40,6 +40,8 @@ android {
 }
 
 dependencies {
+    implementation("androidx.health.connect:connect-client:1.1.0-alpha11")
+    implementation("com.google.android.gms:play-services-wearable:19.0.0")
     implementation(libs.play.services.wearable)
     implementation(platform(libs.androidx.compose.bom))
     implementation(libs.androidx.compose.ui)
