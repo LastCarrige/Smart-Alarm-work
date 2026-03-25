@@ -1,50 +1,32 @@
-# Welcome to your Expo app 👋
+# WayWake (Розумний будильник для подорожей)
 
-This is an [Expo](https://expo.dev) project created with [`create-expo-app`](https://www.npmjs.com/package/create-expo-app).
+Мобільний застосунок, створений для того, щоб ви ніколи не проспали свою зупинку і прокидалися максимально бадьорими. WayWake відстежує вашу геолокацію в реальному часі та аналізує дані з датчиків, щоб розбудити вас у найлегшу фазу сну безпосередньо перед прибуттям.
 
-## Get started
+## Головні функції
+- **Динамічний GPS-трекінг:** Розрахунок часу до прибуття на основі поточної швидкості та відстані до пункту призначення.
+- **Аналіз фаз сну:** Використання нейромережі для класифікації стану користувача (AWAKE, N1, N2, N3) на основі даних про пульс та рухи.
+- **Розумне "вікно пробудження":** Алгоритм шукає фазу легкого сну (N1/N2) за заданий час до дедлайну, щоб уникнути стресового пробудження з глибокого сну.
+- **Локальна база даних:** Швидке, надійне та офлайн-збереження налаштувань поїздки та масиву даних сну за допомогою SQLite.
 
-1. Install dependencies
+## Технологічний стек
+- *Frontend:* React Native, Expo
+- *Database:* SQLite (`expo-sqlite`)
+- *Backend / ML:* Python (Нейронна мережа для обробки сигналів)
 
+## Як запустити проєкт локально
+1. Зклонуйте репозиторій:
    ```bash
+   git clone [посилання_на_репозиторій]
+2. Встановіть залежності (потрібен Node.js):
    npm install
-   ```
-
-2. Start the app
-
-   ```bash
+3. Запустіть застосунок через Expo:
    npx expo start
-   ```
 
-In the output, you'll find options to open the app in a
+## Команда розробників:
+* Чайковська Мар'яна — Team Lead & Database Architecture (Проєктування локальної БД, оптимізація запитів)
 
-- [development build](https://docs.expo.dev/develop/development-builds/introduction/)
-- [Android emulator](https://docs.expo.dev/workflow/android-studio-emulator/)
-- [iOS simulator](https://docs.expo.dev/workflow/ios-simulator/)
-- [Expo Go](https://expo.dev/go), a limited sandbox for trying out app development with Expo
+* Заболотна Анастасія - Backend & Machine Learning (Нейромережа, обробка даних сну)
 
-You can start developing by editing the files inside the **app** directory. This project uses [file-based routing](https://docs.expo.dev/router/introduction).
+* Блащук Юлія - Backend & Analysis (Розробка застосунку на годинник, дослідження фаз сну, аналітика)
 
-## Get a fresh project
-
-When you're ready, run:
-
-```bash
-npm run reset-project
-```
-
-This command will move the starter code to the **app-example** directory and create a blank **app** directory where you can start developing.
-
-## Learn more
-
-To learn more about developing your project with Expo, look at the following resources:
-
-- [Expo documentation](https://docs.expo.dev/): Learn fundamentals, or go into advanced topics with our [guides](https://docs.expo.dev/guides).
-- [Learn Expo tutorial](https://docs.expo.dev/tutorial/introduction/): Follow a step-by-step tutorial where you'll create a project that runs on Android, iOS, and the web.
-
-## Join the community
-
-Join our community of developers creating universal apps.
-
-- [Expo on GitHub](https://github.com/expo/expo): View our open source platform and contribute.
-- [Discord community](https://chat.expo.dev): Chat with Expo users and ask questions.
+* Гелин Марічка, Шелепило Юліана - Frontend (дизайн інтерфейсу, UI/UX, навігація)
