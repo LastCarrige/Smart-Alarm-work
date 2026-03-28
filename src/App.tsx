@@ -1,10 +1,10 @@
-// src/App.tsx
-import Home from './pages/Home';
+
+import RouteMap from './pages/RouteMap';
 
 function App() {
   return (
     <div className="App">
-      <Home />
+      <RouteMap />
     </div>
   );
 }

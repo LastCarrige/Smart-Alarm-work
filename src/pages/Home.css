@@ -13,7 +13,7 @@
   }
   
   .logo-img {
-    width: 250px; /* Розмір логотипа */
+    width: 350px; /* Розмір логотипа */
     margin-bottom: 20px;
     filter: drop-shadow(0 0 15px rgba(97, 136, 219, 0.7)); /* Ефект свічення лого */
   }
