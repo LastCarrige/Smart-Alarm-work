@@ -1,21 +1,25 @@
 // src/pages/Home.tsx
+import { useNavigate } from 'react-router-dom';
 import './Home.css';
 import logo from '../assets/logo.svg';
 
 const Home = () => {
+  const navigate = useNavigate();
+
   return (
     <div className="home-container">
-      {/* 1. Наш логотип */}
       <img src={logo} alt="WayWake Logo" className="logo-img" />
-      
-      {/* 2. Текстові заголовки */}
       <h1 className="main-title">WayWake</h1>
       <p className="sub-title">Smart Wake for Travelers</p>
       
-      {/* 3. Кнопка "Get started" */}
-      <button className="start-button">
+      <button className="start-button" onClick={() => navigate('/plan')}>
         Get started
       </button>
+
+      <div className="top-nav-icons">
+        <button className="icon-btn" onClick={() => navigate('/settings')}>⚙️</button>
+        <button className="icon-btn" onClick={() => navigate('/analysis')}>📊</button>
+      </div>
     </div>
   );
 };

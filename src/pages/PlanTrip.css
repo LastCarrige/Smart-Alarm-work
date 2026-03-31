@@ -1,90 +1,90 @@
 .plan-container {
-    height: 100vh;
-    background: url('../assets/background.png') no-repeat center center/cover;
-    padding: 40px 20px;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    color: white;
-    box-sizing: border-box;
-  }
-  
-  .plan-header {
-    display: flex;
-    justify-content: space-between;
-    align-items: flex-start;
-    margin-bottom: 40px;
-  }
-  
-  .plan-header h1 {
-    font-size: 24px;
-    margin: 0;
-  }
-  
-  
-  
-  .small-logo-top {
-    position: absolute; 
-    top: 5px;  
-    right: 5px; 
-    width: 125px;  
-    filter: drop-shadow(0 0 10px rgba(97, 136, 219, 0.5));
-    z-index: 10;  
-  }
-  
-  .input-list {
-    display: flex;
-    flex-direction: column;
-    gap: 15px;
-    flex-grow: 1; 
+  height: 100vh;
+  background: url('../assets/background.png') no-repeat center center/cover;
+  padding: 40px 20px;
+  display: flex;
+  flex-direction: column;
   justify-content: center;
-  }
-  
-  .input-card {
-    background: rgba(255, 255, 255, 0.05);
-    backdrop-filter: blur(15px);
-    padding: 15px 20px;
-    border-radius: 20px;
-    display: flex;
-    align-items: center;
-    border: 1px solid rgba(255, 255, 255, 0.1);
-  }
-  
-  .icon-placeholder {
-    font-size: 24px;
-    margin-right: 15px;
-  }
-  
-  .input-text {
-    flex-grow: 1;
-    display: flex;
-    flex-direction: column;
-  }
-  
-  .input-text span {
-    font-size: 12px;
-    opacity: 0.5;
-  }
-  
-  .input-text strong {
-    font-size: 16px;
-  }
-  
-  .arrow {
-    font-size: 24px;
-    opacity: 0.3;
-  }
-  
-  .continue-btn {
-    margin-top: auto;
-    background: linear-gradient(90deg, #6188DB, #AEB9D4);
-    color: black;
-    border: none;
-    padding: 18px;
-    border-radius: 30px;
-    font-weight: bold;
-    font-size: 18px;
-    cursor: pointer;
-    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
-    margin-top: 20px;
-  }
+  color: white;
+  box-sizing: border-box;
+}
+
+.plan-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  margin-bottom: 40px;
+}
+
+.plan-header h1 {
+  font-size: 24px;
+  margin: 0;
+}
+
+
+
+.small-logo-top {
+  position: absolute; 
+  top: 5px;  
+  right: 5px; 
+  width: 125px;  
+  filter: drop-shadow(0 0 10px rgba(97, 136, 219, 0.5));
+  z-index: 10;  
+}
+
+.input-list {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+  flex-grow: 1; 
+justify-content: center;
+}
+
+.input-card {
+  background: rgba(255, 255, 255, 0.05);
+  backdrop-filter: blur(15px);
+  padding: 15px 20px;
+  border-radius: 20px;
+  display: flex;
+  align-items: center;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.icon-placeholder {
+  font-size: 24px;
+  margin-right: 15px;
+}
+
+.input-text {
+  flex-grow: 1;
+  display: flex;
+  flex-direction: column;
+}
+
+.input-text span {
+  font-size: 12px;
+  opacity: 0.5;
+}
+
+.input-text strong {
+  font-size: 16px;
+}
+
+.arrow {
+  font-size: 24px;
+  opacity: 0.3;
+}
+
+.continue-btn {
+  margin-top: auto;
+  background: linear-gradient(90deg, #6188DB, #AEB9D4);
+  color: black;
+  border: none;
+  padding: 18px;
+  border-radius: 30px;
+  font-weight: bold;
+  font-size: 18px;
+  cursor: pointer;
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+  margin-top: 20px;
+}
