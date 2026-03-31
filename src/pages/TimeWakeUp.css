@@ -1,0 +1,141 @@
+.wakeup-container {
+  height: 100vh;
+  width: 100%;
+  background-size: cover;
+  background-position: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+  color: white;
+  font-family: 'Inter', sans-serif; /* Або той, що в проекті */
+}
+
+.moon-container {
+  position: absolute;
+  top: 60px;
+  right: 30px;
+}
+
+.moon-small {
+  width: 40px;
+  opacity: 0.8;
+}
+
+.content-wrapper {
+  text-align: center;
+  z-index: 2;
+}
+
+.greeting {
+  font-size: 42px;
+  font-weight: 700;
+  margin-bottom: 10px;
+  letter-spacing: 1px;
+}
+
+.divider {
+  width: 250px;
+  height: 1px;
+  background: linear-gradient(90deg, transparent, rgba(255,255,255,0.5), transparent);
+  margin: 20px auto;
+}
+
+.sub-greeting {
+  font-size: 24px;
+  font-weight: 400;
+  margin-bottom: 8px;
+}
+
+.description {
+  font-size: 14px;
+  color: rgba(255, 255, 255, 0.6);
+  margin-bottom: 100px;
+}
+
+/* --- ОНОВЛЕНА СЕКЦІЯ КНОПКИ З АНІМАЦІЄЮ RIPPLE --- */
+
+.action-section {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-bottom: 60px; /* Трохи підняв кнопку */
+}
+
+.ripple-button-container {
+  position: relative;
+  width: 150px; /* Ширина зони анімації */
+  height: 150px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background: transparent;
+  border: none;
+  cursor: pointer;
+  padding: 0;
+  outline: none;
+  -webkit-tap-highlight-color: transparent;
+}
+
+/* 1. Жирне центральне коло (саме ядро кнопки) */
+.button-core {
+  width: 55px;
+  height: 55px;
+  background-color: #72D7FF; /* Той самий яскраво-блакитний */
+  border-radius: 50%;
+  position: relative;
+  z-index: 5; /* Завжди зверху хвиль */
+  box-shadow: 0 0 15px rgba(114, 215, 255, 0.7); /* М'яке світіння ядра */
+  transition: transform 0.1s ease, background-color 0.2s ease;
+}
+
+/* 2. Спільні стилі для хвиль пульсації */
+.ripple-wave {
+  position: absolute;
+  border-radius: 50%;
+  background-color: rgba(114, 215, 255, 0.5); /* Світліший колір хвилі */
+  z-index: 1;
+  opacity: 0; /* Спочатку невидимі */
+  
+  /* Підключаємо анімацію: назва, тривалість, тип, нескінченно */
+  animation: ripple-effect 2.5s cubic-bezier(0.4, 0, 0.6, 1) infinite;
+}
+
+/* 3. Налаштування для кожної з трьох хвиль (з різною затримкою) */
+.wave-1 {
+  animation-delay: 0s;
+}
+
+.wave-2 {
+  animation-delay: 0.8s; /* Починає через 0.8с */
+}
+
+.wave-3 {
+  animation-delay: 1.6s; /* Починає через 1.6с */
+}
+
+/* 4. САМА АНІМАЦІЯ RIPPLE */
+@keyframes ripple-effect {
+  0% {
+    width: 55px;  /* Починається з розміру ядра */
+    height: 55px;
+    opacity: 0.8; /* Майже непрозора на старті */
+    transform: scale(1);
+  }
+  100% {
+    width: 140px; /* Виростає до великого розміру */
+    height: 140px;
+    opacity: 0;   /* Стає повністю прозорою в кінці */
+    transform: scale(1); /* Можна не змінювати scale, якщо міняємо width/height */
+  }
+}
+
+/* Ефекти при взаємодії */
+.ripple-button-container:hover .button-core {
+  background-color: #a0e6ff; /* Трохи світліша при наведенні */
+}
+
+.ripple-button-container:active .button-core {
+  transform: scale(0.92); /* Ефект натискання */
+}
