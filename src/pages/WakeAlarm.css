@@ -1,6 +1,7 @@
 .alarm-page {
   width: 100%;
   min-height: 100vh;
+  margin: 0;
   background-size: cover;
   background-position: center;
   display: flex;

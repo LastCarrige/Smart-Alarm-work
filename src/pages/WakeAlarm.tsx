@@ -1,22 +1,49 @@
-import React from 'react';
-import { useNavigate } from 'react-router-dom';
-import './WakeAlarm.css';
+import React from "react";
+import { useNavigate } from "react-router-dom";
+import "./WakeAlarm.css";
+
+// Додаємо імпорти для графіка
+import {
+  BarChart,
+  Bar,
+  XAxis,
+  YAxis,
+  ResponsiveContainer,
+  Cell,
+  CartesianGrid,
+} from "recharts";
 
 // Імпорт асетів
-import spaceBg from '../assets/images/background.webp';
-import dividerLine from '../assets/images/Header-line.png';
-// import awakeDot from '../assets/images/Awake.png';
-// import remDot from '../assets/images/REM.png';
-// import lightDot from '../assets/images/Light.png';
-// import deepDot from '../assets/images/Deep.png';
+import spaceBg from "../assets/images/background.webp";
+import dividerLine from "../assets/images/Header-line.png";
 
 const WakeAlarm: React.FC = () => {
-  const sleepStages = [
-    { id: 'awake', label: 'Awake', percentage: 8, color: '#5EEAD4' },
-    { id: 'rem', label: 'Rem', percentage: 18, color: '#9333EA' },
-    { id: 'light', label: 'Light', percentage: 52, color: '#60A5FA' },
-    { id: 'deep', label: 'Deep', percentage: 22, color: '#2563EB' },
+  const navigate = useNavigate();
+
+  // Дані для графіка (можеш змінювати значення value, щоб міняти висоту стовпчиків)
+  const chartData = [
+    { time: "00:00", value: 10, stage: "deep" },
+    { time: "00:30", value: 0, stage: "none" },
+    { time: "01:00", value: 30, stage: "light" },
+    { time: "01:30", value: 0, stage: "none" },
+    { time: "02:00", value: 45, stage: "deep" },
+    { time: "02:30", value: 0, stage: "none" },
+    { time: "03:00", value: 25, stage: "awake" },
+    { time: "03:30", value: 70, stage: "rem" },
   ];
+
+  const sleepStages = [
+    { id: "awake", label: "Awake", percentage: 25, color: "#5EEAD4" },
+    { id: "rem", label: "Rem", percentage: 70, color: "#9333EA" },
+    { id: "light", label: "Light", percentage: 27, color: "#60A5FA" },
+    { id: "deep", label: "Deep", percentage: 45, color: "#2563EB" },
+  ];
+
+  // Функція для підбору кольору стовпчика залежно від фази
+  const getBarColor = (stageId: string) => {
+    const stage = sleepStages.find((s) => s.id === stageId);
+    return stage ? stage.color : "#1a448b"; // дефолтний колір, якщо фаза не знайдена
+  };
 
   return (
     <div className="alarm-page" style={{ backgroundImage: `url(${spaceBg})` }}>
@@ -28,8 +55,45 @@ const WakeAlarm: React.FC = () => {
 
         <section className="chart-section">
           <div className="chart-card">
-            {/* Сюди ти вставиш свій графік, коли він буде готовий */}
-            <div className="chart-placeholder-grid"></div>
+            {/* Графік розтягується на всю ширину картки завдяки ResponsiveContainer */}
+            <ResponsiveContainer width="100%" height="100%">
+              <BarChart
+                data={chartData}
+                margin={{ top: 20, right: 10, left: -30, bottom: 0 }}
+              >
+                {/* Сітка на фоні (опціонально) */}
+                <CartesianGrid
+                  vertical={false}
+                  stroke="rgba(255,255,255,0.05)"
+                />
+
+                <XAxis
+                  dataKey="time"
+                  axisLine={false}
+                  tickLine={false}
+                  tick={{ fill: "rgba(255,255,255,0.4)", fontSize: 10 }}
+                  // ГОРОВНЕ ВИПРАВЛЕННЯ ТУТ:
+                  interval={0} // Показувати ВСІ підписи часу без винятку
+                  padding={{ left: 10, right: 10 }} // Додаємо відступи по боках, щоб текст не злипався
+                />
+
+                <YAxis
+                  axisLine={false}
+                  tickLine={false}
+                  tick={{ fill: "rgba(255,255,255,0.4)", fontSize: 10 }}
+                  domain={[0, 100]}
+                />
+
+                <Bar dataKey="value" radius={[6, 6, 0, 0]} barSize={28}>
+                  {chartData.map((entry, index) => (
+                    <Cell
+                      key={`cell-${index}`}
+                      fill={getBarColor(entry.stage)}
+                    />
+                  ))}
+                </Bar>
+              </BarChart>
+            </ResponsiveContainer>
           </div>
         </section>
 
@@ -40,8 +104,14 @@ const WakeAlarm: React.FC = () => {
               <div key={stage.id} className="stage-item">
                 <div className="stage-left-part">
                   <div className="icon-glow-wrapper">
-                    <div className="glow-sphere" style={{ backgroundColor: stage.color }}></div>
-                    <div className="dot-core" style={{ backgroundColor: stage.color }}></div>
+                    <div
+                      className="glow-sphere"
+                      style={{ backgroundColor: stage.color }}
+                    ></div>
+                    <div
+                      className="dot-core"
+                      style={{ backgroundColor: stage.color }}
+                    ></div>
                   </div>
                   <span className="stage-label">{stage.label}</span>
                 </div>
