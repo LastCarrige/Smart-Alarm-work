@@ -36,8 +36,8 @@
 
 .back-btn-circle {
   /* ПУНКТ 2: Розміри кола чітко з скріншоту */
-  width: 32px;
-  height: 32px;
+  width: 30px;
+  height: 30px;
   background-color: #071225; /* Fill з Figma */
   border: 3px solid #a7a7a7; /* Stroke з Figma */
   border-radius: 50%;
@@ -48,7 +48,7 @@
 }
 
 .back-arrow-img {
-  width: 16px; /* Маленька стрілка всередині кола */
+  width: 14px !important; /* Маленька стрілка всередині кола */
   height: auto;
   display: block;
 }

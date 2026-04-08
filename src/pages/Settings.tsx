@@ -6,6 +6,7 @@ import './Settings.css';
 import SunIcon from '../assets/images/sun-icon.svg'; 
 import MoonIcon from '../assets/images/moon-icon.svg'; 
 import WatchIcon from '../assets/images/watch-icon.svg'; 
+import BackArrowIcon from '../assets/images/arrow-back.svg'; // Імпорт стрілки
 
 // Кружечки
 import CyanCircle from '../assets/images/Light.png';
@@ -15,7 +16,6 @@ import PurpleCircle from '../assets/images/REM.png';
 const Settings: React.FC = () => {
   const navigate = useNavigate();
 
-  // Стан для випадаючих списків
   const [openSelect, setOpenSelect] = useState<string | null>(null);
   const [alarmSound, setAlarmSound] = useState('Gentle Chime');
   const [language, setLanguage] = useState('English');
@@ -28,17 +28,19 @@ const Settings: React.FC = () => {
     <div className="settings-page">
       <div className="settings-container">
         {/* Header */}
-        <div className="settings-header">
-          <button className="back-arrow-btn" onClick={() => navigate(-1)}>
-            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="white" strokeWidth="2">
-              <path d="M19 12H5M12 19l-7-7 7-7" />
-            </svg>
-          </button>
-          <h2 className="settings-title">Settings</h2>
+        <div className="settings-header-wrapper">
+          <div className="settings-header">
+            <button className="back-btn-wrapper" onClick={() => navigate(-1)}>
+              <div className="back-btn-circle">
+                <img src={BackArrowIcon} alt="Back" className="back-arrow-img" />
+              </div>
+            </button>
+            <h2 className="settings-title">Settings</h2>
+          </div>
+          <div className="header-line"></div>
         </div>
 
         <div className="settings-content">
-          
           {/* Theme Section */}
           <div className="settings-card">
             <div className="card-row">
@@ -62,7 +64,7 @@ const Settings: React.FC = () => {
             <h3>Accent Color</h3>
             <div className="color-options">
               <div className="color-item">
-                <img src={CyanCircle} alt="Cyan" className="color-circle active" />
+                <img src={CyanCircle} alt="Cyan" className="color-circle" />
                 <span>Cyan</span>
               </div>
               <div className="color-item">
@@ -77,7 +79,7 @@ const Settings: React.FC = () => {
           </div>
 
           {/* Alarm Sound Section */}
-          <div className="settings-card">
+          <div className={`settings-card ${openSelect === 'alarm' ? 'active-card' : ''}`}>
             <h3>Alarm Sound</h3>
             <div className="custom-select-wrapper">
               <div 
@@ -115,7 +117,7 @@ const Settings: React.FC = () => {
           </div>
 
           {/* Language Section */}
-          <div className="settings-card">
+          <div className={`settings-card ${openSelect === 'lang' ? 'active-card' : ''}`}>
             <h3>Language</h3>
             <div className="custom-select-wrapper">
               <div 
