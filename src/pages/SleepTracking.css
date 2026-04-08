@@ -77,6 +77,8 @@
   cursor: pointer;
   margin-bottom: 20px;
 }
+
+
 /* 1. Повністю очищаємо контейнер від зайвих ефектів */
 .wave-placeholder svg {
   overflow: visible; /* Дозволяємо лініям трохи виходити за межі без обрізання */

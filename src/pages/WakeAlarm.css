@@ -134,7 +134,7 @@
   font-size: 18px;
   font-weight: 700;
   cursor: pointer;
-  box-shadow: 0 5px 20px rgba(59, 130, 246, 0.4);
+  box-shadow: 0 0 10px 2px rgba(16, 120, 255, 0.94);
   transition: transform 0.2s;
 }
 
