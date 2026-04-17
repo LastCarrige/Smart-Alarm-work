@@ -2,7 +2,7 @@ package com.example.myapplication.utils
 
 object Constants {
     // Шлях, по якому телефон буде "слухати" дані
-    const val DATA_PATH = "/sleep_analysis_data"
+    const val DATA_PATH = "/sensor_data"
 
     // Ключі для передачі в пакеті
     const val KEY_START_TIME = "start_time"
