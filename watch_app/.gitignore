@@ -1,0 +1,51 @@
+# --- Android Studio & IntelliJ ---
+.idea/
+*.iml
+.gradle/
+build/
+local.properties
+captures/
+.externalNativeBuild/
+.cxx/
+cmake-build-*/
+output.json
+
+# --- Налаштування модулів ---
+# (Ми ігноруємо build-папки всередині app та wear)
+app/build/
+wear/build/
+
+# --- macOS (Ваш комп'ютер) ---
+.DS_Store
+.AppleDouble
+.LSOverride
+Icon
+._*
+.Spotlight-V100
+.Trashes
+
+# --- Windows (Комп'ютери ваших колег) ---
+# Ці файли можуть з'явитися після їхніх правок
+Thumbs.db
+ehthumbs.db
+Desktop.ini
+
+# --- Gradle ---
+# Ми НЕ ігноруємо gradlew та gradlew.bat, щоб проєкт запускався всюди
+.gradle/
+build/
+
+# --- Скомпіловані файли ---
+*.apk
+*.ap_
+*.dex
+*.class
+
+# --- Log files ---
+*.log
+
+# --- Резервні копії та тимчасові файли ---
+*.bak
+*.swp
+*~
+.stackdump
