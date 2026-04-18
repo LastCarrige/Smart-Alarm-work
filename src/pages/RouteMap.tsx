@@ -1,58 +1,79 @@
-import { MapContainer, TileLayer, Marker, Polyline } from 'react-leaflet';
+import React, { useEffect, useState } from 'react'; 
+import { MapContainer, TileLayer, Marker, useMap } from 'react-leaflet';
 import 'leaflet/dist/leaflet.css';
 import './RouteMap.css';
 import logo from '../assets/logo.svg';
-// 1. ДОДАЄМО ІМПОРТ:
-import { useNavigate } from 'react-router-dom'; 
+import dividerLine from "../assets/images/Header-line.png";
+import arrowSvg from "../assets/images/arrow-back.svg";
+import { useNavigate } from 'react-router-dom';
+
+const RecenterMap = ({ coords }: { coords: [number, number] }) => {
+  const map = useMap();
+  map.setView(coords, 15);
+  return null;
+};
 
 const RouteMap = () => {
-  // 2. АКТИВУЄМО ШТУРМАНА:
   const navigate = useNavigate();
 
-  // Координати для прикладу
-  const position: [number, number] = [49.8397, 24.0297];
-  const destination: [number, number] = [49.832, 24.04];
+  const [position, setPosition] = useState<[number, number] | null>(null);
+
+  useEffect(() => {
+    navigator.geolocation.getCurrentPosition(
+      (pos) => {
+        setPosition([pos.coords.latitude, pos.coords.longitude]);
+      },
+      (err) => console.log("Користувач заборонив доступ або помилка")
+    );
+  }, []);
 
   return (
     <div className="map-page-container">
       <header className="map-header">
-        {/* Кнопка "назад" вже працює через window.history.back() - це ок */}
-        <button className="back-btn" onClick={() => window.history.back()}>←</button>
+        <button className="back-btn-wrapper" onClick={() => navigate(-1)}>
+          <div className="back-btn-circle">
+            <img src={arrowSvg} alt="Back" className="back-arrow-img" />
+          </div>
+        </button>
         <h1>Route Map</h1>
-        <img src={logo} alt="Logo" className="logo-icon-corner" />
+        <img src={logo} alt="Logo" className="small-logo-top" />
+        <img src={dividerLine} className="line-separator-analysis" alt="" />
       </header>
 
       <div className="map-wrapper">
-        <MapContainer center={position} zoom={13} zoomControl={false} className="leaflet-container-view">
-          <TileLayer
-            url="https://{s}.basemaps.cartocdn.com/dark_all/{z}/{x}/{y}{r}.png"
-          />
-          <Marker position={position} />
-          <Marker position={destination} />
-          <Polyline positions={[position, destination]} color="#6188DB" />
+        <MapContainer 
+          center={position || [48.3794, 31.1656]} 
+          zoom={13} 
+          zoomControl={false} 
+          className="leaflet-container-view"
+        >
+          <TileLayer url="https://{s}.basemaps.cartocdn.com/dark_all/{z}/{x}/{y}{r}.png" />
+          
+          {position && (
+            <>
+              <RecenterMap coords={position} />
+              <Marker position={position} />
+            </>
+          )}
         </MapContainer>
         
         <div className="map-overlay-text">
-            Тут буде реальна карта, тому я просто накинула макет
+            {position ? "Ваша геопозиція знайдена" : "Шукаємо ваше місцезнаходження..."}
         </div>
       </div>
 
       <div className="info-cards">
         <div className="info-item">
           <span>Distance</span>
-          <strong>52 km</strong>
+          <strong>— km</strong> 
         </div>
         <div className="info-item">
           <span>Arrival</span>
-          <strong>08:10</strong>
+          <strong>— : —</strong> 
         </div>
       </div>
 
-      {/* 3. ОНОВЛЮЄМО КНОПКУ: */}
-      <button 
-        className="sleep-mode-btn"
-        onClick={() => navigate('/tracking')} // Кажемо: "лети на екран сну"
-      >
+      <button className="sleep-mode-btn" onClick={() => navigate('/tracking')}>
         Start sleep mode
       </button>
     </div>

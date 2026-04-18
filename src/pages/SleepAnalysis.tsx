@@ -103,9 +103,9 @@ const SleepAnalysis: React.FC = () => {
 
         {/* КНОПКИ ДІЙ */}
         <div className="analysis-actions">
-          <button className="btn-settings">Settings</button>
+        <button className="btn-settings" onClick={() => navigate('/settings')}>Settings</button>
           <button className="btn-new-trip" onClick={() => navigate("/plan")}>
-            New trip
+          New trip
           </button>
         </div>
       </div>

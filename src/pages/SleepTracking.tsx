@@ -1,7 +1,8 @@
 import { useState, useEffect } from 'react';
-// 1. Додаємо імпорт штурмана
 import { useNavigate } from 'react-router-dom'; 
 import './SleepTracking.css';
+import dividerLine from "../assets/images/Header-line.png";
+import arrowSvg from "../assets/images/arrow-back.svg";
 
 const SleepTracking = () => {
   const [time, setTime] = useState(new Date());
@@ -24,8 +25,13 @@ const SleepTracking = () => {
   return (
     <div className="sleep-container">
       <header className="sleep-header">
-        <button className="back-btn" onClick={() => window.history.back()}>←</button>
+      <button className="back-btn-wrapper" onClick={() => navigate(-1)}>
+          <div className="back-btn-circle">
+            <img src={arrowSvg} alt="Back" className="back-arrow-img" />
+          </div>
+        </button>
         <h1>Sleep Tracking</h1>
+        <img src={dividerLine} className="line-separator-analysis" alt="" />
       </header>
 
       <div className="clock-section">

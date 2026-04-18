@@ -121,7 +121,12 @@ const WakeAlarm: React.FC = () => {
           </div>
         </section>
 
-        <button className="btn-view-analysis">View Analysis</button>
+        <button 
+  className="btn-view-analysis" 
+  onClick={() => navigate('/analysis')}
+>
+  View Analysis
+</button>
       </div>
     </div>
   );
