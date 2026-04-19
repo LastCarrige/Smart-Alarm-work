@@ -1,0 +1,84 @@
+/* src/pages/Home.css */
+
+.home-container {
+  height: 100vh; /* На всю висоту екрана */
+  width: 100%;
+  background: url('../assets/background.png') no-repeat center center/cover;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  color: white;
+  text-align: center;
+}
+
+.logo-img {
+  width: 350px; /* Розмір логотипа */
+  margin-bottom: 20px;
+  filter: drop-shadow(0 0 15px rgba(97, 136, 219, 0.7)); /* Ефект свічення лого */
+}
+
+.main-title {
+  font-size: 3.5rem; /* Великий шрифт */
+  font-weight: bold;
+  margin: 0;
+  color: #ffffff;
+}
+
+.sub-title {
+  font-size: 1.2rem;
+  opacity: 0.8;
+  margin-top: 5px;
+  margin-bottom: 60px;
+  color: #d1d5db;
+}
+
+.start-button {
+  background-color: #AEB9D4; /* Колір кнопки з твого скріншоту */
+  color: #000;
+  padding: 15px 55px;
+  border-radius: 30px; /* Закруглені краї */
+  border: none;
+  font-size: 1.1rem;
+  font-weight: bold;
+  cursor: pointer;
+  box-shadow: 0 0 30px rgba(97, 136, 219, 0.5); /* Сильне свічення кнопки */
+  transition: transform 0.2s;
+}
+
+.start-button:hover {
+  transform: scale(1.05); /* Кнопка трохи збільшується при наведенні */
+}
+
+.top-nav-icons {
+  position: absolute;
+  top: 20px;    /* Відступ від верхнього краю */
+  right: 20px;  /* Відступ від правого краю */
+  display: flex;
+  gap: 15px;    /* Відстань між самими іконками */
+  z-index: 10;  /* Щоб вони завжди були зверху */
+}
+
+/* Стиль самих іконок-кнопок */
+.icon-btn {
+  background: rgba(255, 255, 255, 0.15); 
+  border: none;
+  font-size: 20px;
+  width: 45px;
+  height: 45px;
+  border-radius: 50%; 
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  backdrop-filter: blur(8px); 
+  transition: 0.3s;
+}
+.icon-btn svg {
+  /* Щоб сама іконка не була занадто маленькою */
+  width: 24px;
+  height: 24px;
+}
+.icon-btn:hover {
+  background: rgba(255, 255, 255, 0.3);
+}

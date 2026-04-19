@@ -1,0 +1,243 @@
+.settings-page {
+  min-height: 100vh;
+  background: url("../assets/images/background.webp") no-repeat center center
+    fixed;
+  background-size: cover;
+  display: flex;
+  justify-content: center;
+  overflow-y: auto;
+}
+
+.settings-container {
+  width: 100%;
+  max-width: 430px;
+  padding: 52px 24px 40px;
+  color: white;
+  font-family: "Inter", sans-serif;
+}
+
+/* HEADER STYLE */
+.settings-header-wrapper {
+  margin-bottom: 25px;
+}
+
+.settings-header {
+  display: flex;
+  align-items: center;
+  gap: 15px;
+}
+
+.back-arrow-btn {
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: 0;
+  display: flex;
+  align-items: center;
+}
+
+.back-arrow-img {
+  width: 32px;
+  height: 32px;
+}
+
+.settings-title {
+  font-family: 'Inter', sans-serif;
+  font-size: 28px; /* Великий заголовок */
+  font-weight: 400;
+  letter-spacing: 1.5px;
+  margin: 0;
+  color: white;
+}
+
+.header-line {
+  width: 100%;
+  height: 1px;
+  background: linear-gradient(
+    90deg,
+    transparent,
+    rgba(255, 255, 255, 0.4),
+    transparent
+  );
+  margin-top: 10px;
+}
+
+.settings-content {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  position: relative; /* Дозволяє z-index працювати всередині */
+}
+
+/* КАРТКИ */
+.settings-card {
+  background: rgba(255, 255, 255, 0.07);
+  backdrop-filter: blur(15px);
+  -webkit-backdrop-filter: blur(15px);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 24px;
+  padding: 16px;
+  position: relative;
+  z-index: 1; /* Базовий рівень */
+}
+
+.settings-card.active-card {
+  z-index: 100 !important;
+}
+
+.settings-card h3 {
+  font-size: 16px;
+  margin: 0 0 4px 0;
+  font-weight: 600;
+}
+
+.settings-card p {
+  font-size: 12px;
+  color: rgba(255, 255, 255, 0.5);
+  margin: 0;
+}
+
+.custom-select-wrapper {
+  position: relative;
+  margin-top: 10px;
+}
+
+.custom-select-trigger {
+  background: rgba(0, 0, 0, 0.2);
+  border: 1px solid rgba(255, 255, 255, 0.15);
+  border-radius: 12px;
+  padding: 12px 16px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  cursor: pointer;
+  font-size: 14px;
+}
+
+.custom-select-trigger.open {
+  border-color: #46d1ff;
+}
+
+.arrow-down {
+  width: 10px;
+  height: 6px;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' fill='none' viewBox='0 0 10 6'%3E%3Cpath stroke='white' stroke-width='1.5' d='m1 1 4 4 4-4'/%3E%3C/svg%3E");
+  background-size: contain;
+  background-repeat: no-repeat;
+  transition: 0.3s;
+}
+
+.custom-select-trigger.open .arrow-down {
+  transform: rotate(180deg);
+}
+
+.custom-options {
+  position: absolute;
+  top: calc(100% + 5px);
+  left: 0;
+  right: 0;
+  background: #1a1f2e; /* Суцільний колір, щоб не просвічувало нижню картку */
+  border: 1px solid rgba(255, 255, 255, 0.15);
+  border-radius: 12px;
+  z-index: 999;
+  overflow: hidden;
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.5);
+}
+
+.option {
+  padding: 12px 16px;
+  font-size: 14px;
+  cursor: pointer;
+}
+
+.option:hover {
+  background: rgba(70, 209, 255, 0.2);
+}
+
+/* ІНШІ ЕЛЕМЕНТИ */
+.card-row,
+.watch-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.theme-toggle-group {
+  display: flex;
+  background: rgba(0, 0, 0, 0.3);
+  padding: 4px;
+  border-radius: 10px;
+}
+
+.theme-btn {
+  background: transparent;
+  border: none;
+  padding: 6px 10px;
+  border-radius: 7px;
+  cursor: pointer;
+}
+
+.theme-btn.active {
+  background: rgba(255, 255, 255, 0.15);
+}
+.theme-btn img {
+  width: 18px;
+  height: 18px;
+}
+
+.color-options {
+  display: flex;
+  gap: 15px;
+  margin-top: 12px;
+}
+.color-item {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 5px;
+}
+.color-circle {
+  width: 42px;
+  height: 42px;
+  cursor: pointer;
+  transform: scale(2);
+}
+
+.color-item span {
+  font-size: 10px;
+  opacity: 0.6;
+}
+
+.watch-info {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+.watch-icon {
+  width: 28px;
+}
+.watch-status {
+  color: #46d1ff !important;
+  font-weight: 600;
+}
+.status-dot {
+  width: 8px;
+  height: 8px;
+  background: #00ffcc;
+  border-radius: 50%;
+  box-shadow: 0 0 10px #00ffcc;
+}
+
+.btn-settings-main {
+  background: linear-gradient(90deg, #46d1ff, #2a7d99);
+  color: #000;
+  border: none;
+  padding: 16px;
+  border-radius: 30px;
+  font-family: "Bold", sans-serif;
+  font-size: 18px;
+  font-weight: 700;
+  margin-top: 20px;
+  cursor: pointer;
+  box-shadow: 0 0 10px 2px rgba(107, 158, 224, 0.94);
+}

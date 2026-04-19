@@ -1,0 +1,120 @@
+.map-page-container {
+  height: 100vh;
+  background: url('../assets/background.png') no-repeat center center/cover;
+  padding: 20px;
+  display: flex;
+  flex-direction: column;
+  color: white;
+  box-sizing: border-box;
+  position: relative;
+}
+
+.map-header {
+  display: flex;
+  align-items: center;
+  gap: 15px;
+  margin-bottom: 20px;
+}
+
+.back-btn-wrapper {
+  background: none;
+  border: none;
+  padding: 10px; /* Збільшуємо зону для тапу палецем */
+  margin-left: -10px; /* Компенсуємо падінг */
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.back-btn-circle {
+  width: 30px;
+  height: 30px;
+  background-color: #071225; /* Fill з Figma */
+  border: 3px solid #a7a7a7; /* Stroke з Figma */
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-sizing: border-box;
+}
+
+.back-arrow-img {
+  width: 14px !important; /* Маленька стрілка всередині кола */
+  height: auto;
+  display: block;
+}
+
+.small-logo-top {
+  position: fixed;
+  top: 20px;
+  right: 20px;
+  width: 58px;
+  height: auto;
+}
+
+.line-separator-analysis {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  height: auto;
+  opacity: 0.5;
+}
+
+.map-wrapper {
+  flex-grow: 1;
+  position: relative;
+  border-radius: 30px;
+  overflow: hidden; /* Щоб карта не вилазила за закруглені кути */
+  border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.leaflet-container-view {
+  height: 100%;
+  width: 100%;
+}
+
+.map-overlay-text {
+  position: absolute;
+  bottom: 20px;
+  right: 20px;
+  max-width: 150px;
+  font-size: 11px;
+  opacity: 0.7;
+  z-index: 1000;
+  text-align: right;
+}
+
+.info-cards {
+  display: flex;
+  background: rgba(255, 255, 255, 0.05);
+  backdrop-filter: blur(10px);
+  border-radius: 20px;
+  padding: 15px;
+  margin: 20px 0;
+  justify-content: space-around;
+}
+
+.info-item {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.info-item span {
+  font-size: 12px;
+  opacity: 0.6;
+}
+
+.sleep-mode-btn {
+  background: linear-gradient(90deg, #6188DB, #AEB9D4);
+  color: black;
+  border: none;
+  padding: 18px;
+  border-radius: 30px;
+  font-weight: bold;
+  font-size: 18px;
+  cursor: pointer;
+  margin-bottom: 10px;
+}

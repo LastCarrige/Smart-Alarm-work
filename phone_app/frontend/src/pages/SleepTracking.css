@@ -1,0 +1,163 @@
+.sleep-container {
+  height: 100vh;
+  background: url('../assets/background.png') no-repeat center center/cover;
+  padding: 40px 20px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  color: white;
+  box-sizing: border-box;
+}
+
+
+
+.sleep-header {
+  position: relative; /* ЦЕ ОБОВ'ЯЗКОВО */
+  width: 100%;
+  display: flex;
+  align-items: center;
+  height: 90px !important; /* Дай йому чітку висоту! */
+  margin-bottom: 40px;
+  padding: 0;
+}
+
+.back-btn-wrapper {
+  background: none;
+  border: none;
+  padding: 10px; /* Збільшуємо зону для тапу палецем */
+  margin-left: -10px; /* Компенсуємо падінг */
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.back-btn-circle {
+  width: 30px;
+  height: 30px;
+  background-color: #071225; /* Fill з Figma */
+  border: 3px solid #a7a7a7; /* Stroke з Figma */
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-sizing: border-box;
+}
+
+.back-arrow-img {
+  width: 14px !important; /* Маленька стрілка всередині кола */
+  height: auto;
+  display: block;
+}
+.line-separator-analysis {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  height: auto;
+  z-index: 10;
+  opacity: 0.5;
+}
+
+.clock-section {
+  text-align: center;
+  margin-top: 40px;
+}
+
+.current-time {
+  font-size: 64px; /* Дуже великий шрифт */
+  margin: 0;
+  font-weight: 600;
+  text-shadow: 0 0 20px rgba(255, 255, 255, 0.3);
+}
+
+.status-text {
+  opacity: 0.6;
+  font-size: 14px;
+  margin-top: 10px;
+}
+
+.wave-section {
+  flex-grow: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+}
+
+/* Налаштування для твоєї SVG хвилі */
+.wave-section svg {
+  width: 100%;
+  filter: drop-shadow(0 0 10px rgba(174, 185, 212, 0.5));
+}
+
+.arrival-info {
+  text-align: center;
+  margin-bottom: 30px;
+}
+
+.arrival-info span {
+  display: block;
+  font-size: 14px;
+  opacity: 0.7;
+}
+
+.time-remaining {
+  font-size: 28px;
+  color: #7BB8E9; /* Колір як на макеті */
+}
+
+.stop-btn {
+  background: #7BB8E9;
+  border: none;
+  padding: 15px 80px;
+  border-radius: 30px;
+  font-weight: bold;
+  font-size: 18px;
+  cursor: pointer;
+  margin-bottom: 20px;
+}
+
+
+/* 1. Повністю очищаємо контейнер від зайвих ефектів */
+.wave-placeholder svg {
+  overflow: visible; /* Дозволяємо лініям трохи виходити за межі без обрізання */
+  filter: none !important; /* Примусово вимикаємо всі фільтри */
+}
+
+@keyframes wave-pure-ripple {
+  0% {
+    transform: scaleY(1); /* Початковий розмір */
+    opacity: 0.7;
+  }
+  50% {
+    /* Змінили 1.1 на 1.5. Тепер лінія розтягується сильніше! */
+    transform: scaleY(1.5); 
+    opacity: 1;
+  }
+  100% {
+    transform: scaleY(1); /* Повертається назад */
+    opacity: 0.7;
+  }
+}
+
+/* 3. Налаштування для кожної лінії окремо */
+.wave-line-1 {
+  animation: wave-pure-ripple 4s ease-in-out infinite;
+  transform-origin: center;
+  stroke: #8E1EC6; /* Колір лінії */
+}
+
+.wave-line-2 {
+  animation: wave-pure-ripple 3s ease-in-out infinite;
+  animation-delay: 0.8s; /* Починає трохи пізніше */
+  transform-origin: center;
+  stroke: #7DE7EE; /* Колір лінії */
+}
+
+.wave-line-3 {
+  animation: wave-pure-ripple 5s ease-in-out infinite;
+  animation-delay: 1.5s; /* Починає ще пізніше */
+  transform-origin: center;
+  stroke: #435AB4; /* Колір лінії */
+}
