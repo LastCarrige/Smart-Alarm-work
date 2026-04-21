@@ -20,4 +20,5 @@ jobs:
           node-version: '20'
 
       - name: Install Dependencies
+        working-directory: ./phone_app/frontend
         run: npm install
