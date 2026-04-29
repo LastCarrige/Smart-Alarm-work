@@ -4,7 +4,7 @@
     "slug": "way-wake",
     "version": "1.0.0",
     "orientation": "portrait",
-    "icon": "./assets/images/icon.png",
+    "icon": "./assets/splash.png",
     "scheme": "waywake",
     "userInterfaceStyle": "automatic",
     "newArchEnabled": true,
@@ -30,10 +30,10 @@
       [
         "expo-splash-screen",
         {
-          "image": "./assets/images/splash-icon.png",
+          "image": "./assets/splash.png",
           "imageWidth": 200,
           "resizeMode": "contain",
-          "backgroundColor": "#ffffff",
+          "backgroundColor": "#69beff",
           "dark": {
             "backgroundColor": "#000000"
           }

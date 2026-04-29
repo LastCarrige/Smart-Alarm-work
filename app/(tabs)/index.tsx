@@ -1,98 +1,115 @@
-import { Image } from 'expo-image';
-import { Platform, StyleSheet } from 'react-native';
+import { useRouter } from 'expo-router';
+import React from 'react';
+import { Dimensions, Image, ImageBackground, StyleSheet, Text, TouchableOpacity, View } from 'react-native';
+import Svg, { Path } from 'react-native-svg';
+import { useTheme } from '../../context/ThemeContext'; // 1. Імпортуємо наш контекст
 
-import { HelloWave } from '@/components/hello-wave';
-import ParallaxScrollView from '@/components/parallax-scroll-view';
-import { ThemedText } from '@/components/themed-text';
-import { ThemedView } from '@/components/themed-view';
-import { Link } from 'expo-router';
+const { width } = Dimensions.get('window');
+const LOGO_BASE_SIZE = width * 0.95; 
 
 export default function HomeScreen() {
-  return (
-    <ParallaxScrollView
-      headerBackgroundColor={{ light: '#A1CEDC', dark: '#1D3D47' }}
-      headerImage={
-        <Image
-          source={require('@/assets/images/partial-react-logo.png')}
-          style={styles.reactLogo}
-        />
-      }>
-      <ThemedView style={styles.titleContainer}>
-        <ThemedText type="title">Welcome!</ThemedText>
-        <HelloWave />
-      </ThemedView>
-      <ThemedView style={styles.stepContainer}>
-        <ThemedText type="subtitle">Step 1: Try it</ThemedText>
-        <ThemedText>
-          Edit <ThemedText type="defaultSemiBold">app/(tabs)/index.tsx</ThemedText> to see changes.
-          Press{' '}
-          <ThemedText type="defaultSemiBold">
-            {Platform.select({
-              ios: 'cmd + d',
-              android: 'cmd + m',
-              web: 'F12',
-            })}
-          </ThemedText>{' '}
-          to open developer tools.
-        </ThemedText>
-      </ThemedView>
-      <ThemedView style={styles.stepContainer}>
-        <Link href="/modal">
-          <Link.Trigger>
-            <ThemedText type="subtitle">Step 2: Explore</ThemedText>
-          </Link.Trigger>
-          <Link.Preview />
-          <Link.Menu>
-            <Link.MenuAction title="Action" icon="cube" onPress={() => alert('Action pressed')} />
-            <Link.MenuAction
-              title="Share"
-              icon="square.and.arrow.up"
-              onPress={() => alert('Share pressed')}
-            />
-            <Link.Menu title="More" icon="ellipsis">
-              <Link.MenuAction
-                title="Delete"
-                icon="trash"
-                destructive
-                onPress={() => alert('Delete pressed')}
-              />
-            </Link.Menu>
-          </Link.Menu>
-        </Link>
+  const router = useRouter();
+  const { isDark } = useTheme(); // 2. Дістаємо стан теми
 
-        <ThemedText>
-          {`Tap the Explore tab to learn more about what's included in this starter app.`}
-        </ThemedText>
-      </ThemedView>
-      <ThemedView style={styles.stepContainer}>
-        <ThemedText type="subtitle">Step 3: Get a fresh start</ThemedText>
-        <ThemedText>
-          {`When you're ready, run `}
-          <ThemedText type="defaultSemiBold">npm run reset-project</ThemedText> to get a fresh{' '}
-          <ThemedText type="defaultSemiBold">app</ThemedText> directory. This will move the current{' '}
-          <ThemedText type="defaultSemiBold">app</ThemedText> to{' '}
-          <ThemedText type="defaultSemiBold">app-example</ThemedText>.
-        </ThemedText>
-      </ThemedView>
-    </ParallaxScrollView>
+  // Динамічні кольори
+  const textColor = isDark ? '#ffffff' : '#071225';
+  const subTextColor = isDark ? '#d1d5db' : 'rgba(7, 18, 37, 0.6)';
+  const iconBg = isDark ? 'rgba(255, 255, 255, 0.15)' : 'rgba(0, 0, 0, 0.1)';
+  const btnBg = isDark ? '#AEB9D4' : '#071225';
+  const btnText = isDark ? '#000' : '#FFF';
+
+  return (
+    <ImageBackground 
+      // 3. Міняємо фон залежно від isDark
+      source={isDark 
+        ? require('../../assets/images/background1.png') 
+        : require('../../assets/images/background_light.png')
+      } 
+      style={[styles.container, { backgroundColor: isDark ? '#071225' : '#F0F4F8' }]}
+      resizeMode="cover"
+    >
+      <View style={styles.topNav}>
+        {/* Кнопка налаштувань */}
+        <TouchableOpacity 
+          style={[styles.iconBtn, { backgroundColor: iconBg }]} 
+          onPress={() => router.push('/settings')}
+        >
+          <Svg width="24" height="24" viewBox="0 0 15 15" fill="none">
+              <Path d="M7.50019 1.50251C7.30135 1.50251 7.11066 1.5815 6.97006 1.7221C6.82946 1.8627 6.75047 2.0534 6.75047 2.25224C6.75047 3.52079 5.21656 4.15656 4.31915 3.25913..." 
+                fill={textColor} // Колір іконки міняється
+              />
+          </Svg>
+        </TouchableOpacity>
+        
+        {/* Кнопка аналітики */}
+        <TouchableOpacity 
+          style={[styles.iconBtn, { backgroundColor: iconBg }]} 
+          onPress={() => router.push('/sleepanalysis')}
+        >
+          <Svg width="24" height="24" viewBox="0 0 16 16" fill="none">
+            <Path d="M2 1H1V14C1 14.2652 1.10536 14.5196 1.29289 14.7071..." fill={textColor}/>
+            <Path d="M15 4.5H11.5V5.5H13.295L9.5 9.295..." fill={textColor}/>
+          </Svg>
+        </TouchableOpacity>
+      </View>
+
+      <View style={styles.content}>
+        <View style={styles.logoStack}>
+          <Image 
+            source={require('../../assets/images/logo_bg.png')} 
+            style={styles.bgLayer} 
+            resizeMode="contain"
+          />
+
+          <View style={styles.iconWrapper}>
+            <Image 
+              source={require('../../assets/images/logo_moon.png')} 
+              style={[styles.logoLayer, styles.moonLayer]} 
+              resizeMode="contain"
+            />
+            <Image 
+              source={require('../../assets/images/logo_pin.png')} 
+              style={[styles.logoLayer, styles.pinLayer]} 
+              resizeMode="contain"
+            />
+            <Image 
+              source={require('../../assets/images/logo_dot.png')} 
+              style={[styles.logoLayer, styles.dotLayer]} 
+              resizeMode="contain"
+            />
+          </View>
+        </View>
+
+        {/* Тексти з динамічними кольорами */}
+        <Text style={[styles.mainTitle, { color: textColor }]}>WayWake</Text>
+        <Text style={[styles.subTitle, { color: subTextColor }]}>Smart Wake for Travelers</Text>
+        
+        {/* Кнопка Get Started */}
+        <TouchableOpacity 
+          style={[styles.startButton, { backgroundColor: btnBg }]} 
+          onPress={() => router.push('/plantrip')}
+        >
+          <Text style={[styles.buttonText, { color: btnText }]}>Get started</Text>
+        </TouchableOpacity>
+      </View>
+    </ImageBackground>
   );
 }
 
 const styles = StyleSheet.create({
-  titleContainer: {
-    flexDirection: 'row',
-    alignItems: 'center',
-    gap: 8,
-  },
-  stepContainer: {
-    gap: 8,
-    marginBottom: 8,
-  },
-  reactLogo: {
-    height: 178,
-    width: 290,
-    bottom: 0,
-    left: 0,
-    position: 'absolute',
-  },
+  container: { flex: 1, alignItems: 'center', justifyContent: 'center' },
+  topNav: { position: 'absolute', top: 60, right: 20, flexDirection: 'row', gap: 15 },
+  iconBtn: { width: 45, height: 45, borderRadius: 22.5, alignItems: 'center', justifyContent: 'center' },
+  content: { alignItems: 'center', width: '100%' },
+  logoStack: { width: LOGO_BASE_SIZE, height: LOGO_BASE_SIZE, alignItems: 'center', justifyContent: 'center', marginBottom: -10, marginTop: -20 },
+  bgLayer: { position: 'absolute', width: '100%', height: '100%' },
+  iconWrapper: { width: LOGO_BASE_SIZE * 0.42, height: LOGO_BASE_SIZE * 0.42, alignItems: 'center', justifyContent: 'center' },
+  logoLayer: { position: 'absolute' },
+  moonLayer: { width: '100%', height: '100%' },
+  pinLayer: { width: '65%', height: '65%' },
+  dotLayer: { width: '20%', height: '20%' },
+  mainTitle: { fontSize: width * 0.12, fontWeight: 'bold', marginTop: 5 },
+  subTitle: { fontSize: 18, marginTop: 5, marginBottom: 80 },
+  startButton: { paddingVertical: 15, paddingHorizontal: 55, borderRadius: 30, elevation: 10 },
+  buttonText: { fontSize: 18, fontWeight: 'bold' },
 });
