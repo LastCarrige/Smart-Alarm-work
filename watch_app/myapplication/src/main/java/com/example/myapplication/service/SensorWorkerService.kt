@@ -1,5 +1,4 @@
 package com.example.myapplication.service
-
 import android.app.*
 import android.content.*
 import android.hardware.*

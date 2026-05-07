@@ -1,6 +1,7 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android">
     <uses-permission android:name="android.permission.WAKE_LOCK"/>
     <uses-feature android:name="android.hardware.type.watch"/>
+
     <uses-permission android:name="android.permission.health.READ_HEART_RATE"/>
     <!--   Тут був наст, що відбувається - питати в джеміні   -->
     <uses-permission android:name="android.permission.WAKE_LOCK"/>
