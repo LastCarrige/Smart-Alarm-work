@@ -20,4 +20,27 @@ jobs:
           node-version: '20'
 
       - name: Install Dependencies
+        working-directory: ./phone_app/frontend
         run: npm install
+
+      - name: Expo Prebuild
+        working-directory: ./phone_app/frontend
+        run: npx expo prebuild --platform android
+
+      - name: Set up JDK 17
+        uses: actions/setup-java@v4
+        with:
+          java-version: '17'
+          distribution: 'zulu'
+
+      - name: Build Android APK
+        working-directory: ./phone_app/frontend/android
+        run: |
+          chmod +x gradlew
+          ./gradlew assembleDebug
+
+      - name: Upload APK
+        uses: actions/upload-artifact@v4
+        with:
+          name: app-debug
+          path: phone_app/frontend/android/app/build/outputs/apk/debug/app-debug.apk
