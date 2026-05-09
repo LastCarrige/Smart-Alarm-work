@@ -1,7 +1,6 @@
 import { useRouter } from 'expo-router';
 import React from 'react';
 import { Dimensions, Image, ImageBackground, StyleSheet, Text, TouchableOpacity, View } from 'react-native';
-import Svg, { Path } from 'react-native-svg';
 import { useTheme } from '../../context/ThemeContext'; // 1. Імпортуємо наш контекст
 
 const { width } = Dimensions.get('window');
@@ -27,6 +26,7 @@ export default function HomeScreen() {
       } 
       style={[styles.container, { backgroundColor: isDark ? '#071225' : '#F0F4F8' }]}
       resizeMode="cover"
+      
     >
       <View style={styles.topNav}>
         {/* Кнопка налаштувань */}
@@ -34,22 +34,21 @@ export default function HomeScreen() {
           style={[styles.iconBtn, { backgroundColor: iconBg }]} 
           onPress={() => router.push('/settings')}
         >
-          <Svg width="24" height="24" viewBox="0 0 15 15" fill="none">
-              <Path d="M7.50019 1.50251C7.30135 1.50251 7.11066 1.5815 6.97006 1.7221C6.82946 1.8627 6.75047 2.0534 6.75047 2.25224C6.75047 3.52079 5.21656 4.15656 4.31915 3.25913..." 
-                fill={textColor} // Колір іконки міняється
-              />
-          </Svg>
+         <Image 
+      source={require('../../assets/images/settings-icon.png')} 
+      style={{ width: 24, height: 24, tintColor: textColor }} 
+    />
         </TouchableOpacity>
         
         {/* Кнопка аналітики */}
         <TouchableOpacity 
           style={[styles.iconBtn, { backgroundColor: iconBg }]} 
-          onPress={() => router.push('/sleepanalysis')}
+          onPress={() => router.replace('/sleepanalysis')}
         >
-          <Svg width="24" height="24" viewBox="0 0 16 16" fill="none">
-            <Path d="M2 1H1V14C1 14.2652 1.10536 14.5196 1.29289 14.7071..." fill={textColor}/>
-            <Path d="M15 4.5H11.5V5.5H13.295L9.5 9.295..." fill={textColor}/>
-          </Svg>
+          <Image 
+      source={require('../../assets/images/analytics-icon.png')} 
+      style={{ width: 24, height: 24, tintColor: textColor }} 
+    />
         </TouchableOpacity>
       </View>
 
@@ -98,7 +97,7 @@ export default function HomeScreen() {
 
 const styles = StyleSheet.create({
   container: { flex: 1, alignItems: 'center', justifyContent: 'center' },
-  topNav: { position: 'absolute', top: 60, right: 20, flexDirection: 'row', gap: 15 },
+  topNav: { position: 'absolute', top: 60, right: 20, flexDirection: 'row', zIndex: 10, gap: 15 },
   iconBtn: { width: 45, height: 45, borderRadius: 22.5, alignItems: 'center', justifyContent: 'center' },
   content: { alignItems: 'center', width: '100%' },
   logoStack: { width: LOGO_BASE_SIZE, height: LOGO_BASE_SIZE, alignItems: 'center', justifyContent: 'center', marginBottom: -10, marginTop: -20 },

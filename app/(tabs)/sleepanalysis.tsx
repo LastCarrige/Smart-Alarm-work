@@ -1,11 +1,17 @@
 import { useRouter } from 'expo-router';
 import React, { useEffect, useRef } from 'react';
 import { Animated, Dimensions, Image, ImageBackground, ScrollView, StyleSheet, Text, TouchableOpacity, View } from 'react-native';
-
+import { useTheme } from '../../context/ThemeContext';
 const { width } = Dimensions.get('window');
 
 export default function SleepAnalysis() {
-  const router = useRouter();
+  const router = useRouter();  const { isDark } = useTheme();
+  
+    const textColor = isDark ? '#ffffff' : '#071225';
+    const subTextColor = isDark ? '#d1d5db' : 'rgba(7, 18, 37, 0.6)';
+    const iconBg = isDark ? 'rgba(255, 255, 255, 0.15)' : 'rgba(0, 0, 0, 0.1)';
+    const btnBg = isDark ? '#AEB9D4' : '#071225';
+    const btnText = isDark ? '#000' : '#FFF';
 
   // Анімації для трьох хвиль
   const moveAnim1 = useRef(new Animated.Value(0)).current;
@@ -29,10 +35,14 @@ export default function SleepAnalysis() {
 
   return (
     <ImageBackground 
-      source={require('../../assets/images/background1.png')} 
-      style={styles.container}
-      resizeMode="cover"
-    >
+              // 3. Міняємо фон залежно від isDark
+              source={isDark 
+                ? require('../../assets/images/background1.png') 
+                : require('../../assets/images/background_light.png')
+              } 
+              style={[styles.container, { backgroundColor: isDark ? '#071225' : '#F0F4F8' }]}
+              resizeMode="cover"
+            >
       {/* 1. ФІКСОВАНА ВЕРХНЯ ЧАСТИНА (НЕ СКРОЛИТЬСЯ) */}
       <View style={styles.fixedHeader}>
         {/* ЛОГОТИП */}

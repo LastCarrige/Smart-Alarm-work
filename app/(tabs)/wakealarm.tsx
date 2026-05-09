@@ -1,11 +1,19 @@
 import { useRouter } from 'expo-router';
 import React from 'react';
 import { Dimensions, Image, ImageBackground, StyleSheet, Text, TouchableOpacity, View } from 'react-native';
+import { useTheme } from '../../context/ThemeContext';
 
 const { width } = Dimensions.get('window');
 
 const WakeAlarm = () => {
   const router = useRouter();
+   const { isDark } = useTheme();
+  
+    const textColor = isDark ? '#ffffff' : '#071225';
+    const subTextColor = isDark ? '#d1d5db' : 'rgba(7, 18, 37, 0.6)';
+    const iconBg = isDark ? 'rgba(255, 255, 255, 0.15)' : 'rgba(0, 0, 0, 0.1)';
+    const btnBg = isDark ? '#AEB9D4' : '#071225';
+    const btnText = isDark ? '#000' : '#FFF';
 
   const chartData = [
     { time: "00:00", value: 30, color: "#2563EB" },
@@ -23,11 +31,15 @@ const WakeAlarm = () => {
   ];
 
   return (
-    <ImageBackground 
-      source={require('../../assets/images/background1.png')} 
-      style={styles.container}
-      resizeMode="cover"
-    >
+   <ImageBackground 
+             // 3. Міняємо фон залежно від isDark
+             source={isDark 
+               ? require('../../assets/images/background1.png') 
+               : require('../../assets/images/background_light.png')
+             } 
+             style={[styles.container, { backgroundColor: isDark ? '#071225' : '#F0F4F8' }]}
+             resizeMode="cover"
+           >
       {/* МАЛЕНЬКЕ ЛОГО У КУТКУ */}
       <View style={styles.smallLogoContainer}>
         <Image source={require('../../assets/images/logo_bg.png')} style={styles.logoLayer} resizeMode="contain" />
