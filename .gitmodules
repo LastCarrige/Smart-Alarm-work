@@ -1,0 +1,3 @@
+[submodule "phone_app/waywake"]
+	path = phone_app/waywake
+	url = https://github.com/LastCarrige/waywake
