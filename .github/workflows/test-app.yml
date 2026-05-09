@@ -13,6 +13,8 @@ jobs:
     steps:
       - name: Checkout Code
         uses: actions/checkout@v4
+        with:
+          submodules: recursive
 
       - name: Setup Node.js
         uses: actions/setup-node@v4
@@ -22,10 +24,6 @@ jobs:
       - name: Install Dependencies
         working-directory: ./phone_app/waywake
         run: npm install
-
-      - name: Expo Prebuild
-        working-directory: ./phone_app/waywake
-        run: npx expo prebuild --platform android
 
       - name: Set up JDK 17
         uses: actions/setup-java@v4
