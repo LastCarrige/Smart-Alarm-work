@@ -20,11 +20,11 @@ jobs:
           node-version: '20'
 
       - name: Install Dependencies
-        working-directory: ./phone_app/frontend
+        working-directory: ./phone_app/waywake
         run: npm install
 
       - name: Expo Prebuild
-        working-directory: ./phone_app/frontend
+        working-directory: ./phone_app/waywake
         run: npx expo prebuild --platform android
 
       - name: Set up JDK 17
@@ -34,7 +34,7 @@ jobs:
           distribution: 'zulu'
 
       - name: Build Android APK
-        working-directory: ./phone_app/frontend/android
+        working-directory: ./phone_app/waywake/android
         run: |
           chmod +x gradlew
           ./gradlew assembleDebug
@@ -43,4 +43,4 @@ jobs:
         uses: actions/upload-artifact@v4
         with:
           name: app-debug
-          path: phone_app/frontend/android/app/build/outputs/apk/debug/app-debug.apk
+          path: phone_app/waywake/android/app/build/outputs/apk/debug/app-debug.apk
